@@ -17,9 +17,14 @@ $.ajax({
 
 function onSuccess (potato) {
   console.log(potato);
-}
 
 
+  for (let i = 0; i < potato.features.length; i ++) {
+      $('#info').append(`<p>${potato.features[i].properties.title}</p>`);
+    };
+  }
+
+// .features["0"].properties.title
 
 
 
