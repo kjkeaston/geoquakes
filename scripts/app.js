@@ -17,14 +17,15 @@ $.ajax({
 
 function onSuccess (potato) {
   console.log(potato);
-
-
   for (let i = 0; i < potato.features.length; i ++) {
+    if (potato.features[i].properties.mag >= 4.0) {
       $('#info').append(`<p>${potato.features[i].properties.title}</p>`);
     };
-  }
+  };
+}
 
 // .features["0"].properties.title
+//.features["0"].properties.mag
 
 
 
