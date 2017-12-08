@@ -22,23 +22,33 @@ function onSuccess (potato) {
   // using the word "debugger" will pause the js execution and let you interact with the variables that occurred at that time
   console.log(potato);
   for (let i = 0; i < potato.features.length; i ++) {
-    if (potato.features[i].properties.mag >= 4.0) {
+    // if (potato.features[i].properties.mag >= 4.0) {
       let time = (Math.round((Date.now() - potato.features[i].properties.time) / 60 / 60 / 1000));
       $("#info").append(`<p>${potato.features[i].properties.title} / ${time} hours ago</p>`);
-    };
+    // };
+    
+    
   };
-}
-
-function initMap() {
-
 map = new google.maps.Map(document.getElementById('map'), {
   center: {lat: 37.78, lng: -122.44},
-  zoom: 5
+  zoom: 2
 });
-
-
-
+for (let i = 0; i < potato.features.length; i ++) {
+  let quakeLocation = {lat: potato.features[i].geometry.coordinates[1], lng: potato.features[i].geometry.coordinates[0]};
+  let marker = new google.maps.Marker({
+    position: quakeLocation,
+    map: map,
+    title: potato.features[i].properties.title,
+    icon: {
+      url: "images/earthquake.png",
+      scaledSize: {height: 40, width: 40}
+    }
+  });
 }
+}
+
+
+
 
 
 // $.ajax({
